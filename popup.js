@@ -1,4 +1,4 @@
-var p = '<div style="width:100px; background-color:#DDDDDD;"><div id="prog" style="background-color:#4CAF50; height:10px; width: 0%"></div></div>';
+var p = '<div align="right"><div align="left" style="width:100px; background-color:#DDDDDD;"><div id="prog" style="background-color:#4CAF50; height:10px; width: 0%"></div></div></div>';
 $("body").append(p);
 var eid = "0";
 function l() {
