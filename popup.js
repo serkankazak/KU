@@ -28,8 +28,7 @@ function l() {
 									method: "GET",
 									success: function(resp) {
 										$("#prog").css("width", 30 + "%");
-										term = (resp.match(/TERM_CAR\$/g) || []).length / 2 - 1;
-										console.log(term);											
+										term = (resp.match(/TERM_CAR\$/g) || []).length / 2 - 1;											
 										icsid = resp.match(/name='ICSID' id='ICSID' value='[^']*'/)[0].replace("name='ICSID' id='ICSID' value='", "").replace(/'$/, "");
 										var obj = {};																								
 										obj["ICAJAX"] = "1";
@@ -82,7 +81,6 @@ function l() {
 											success: function(resp) {
 												$("#prog").css("width", 40 + "%");
 												var c = $(resp).find(".PSLEVEL1GRIDWBO tbody [valign='center']").size();
-												console.log(c);
 												var cc = 1;
 												$(resp).find(".PSLEVEL1GRIDWBO tbody [valign='center']").each(function(i) {
 													$.ajax({
@@ -91,7 +89,9 @@ function l() {
 														success: function(resp) {
 															$("#prog").css("width", (40 + cc++ * 60 / c) + "%");
 															if (c == (cc - 1)) { $("#prog").hide(); }
-															$("body").append("<br>" + $(resp).find('[id=win0divDERIVED_SSR_FC_SSR_CLASSNAME_LONG]').html() + "<br>");
+															$("body").append("<br>" + $(resp).find('[id=win0divDERIVED_SSR_FC_SSR_CLASSNAME_LONG]').html() + " - ");
+															$("body").append($(resp).find("#ACE_STDNT_GRADE_HDR_MID_TERM_AVG_CURR").find("tr:nth-child(4)").text());
+															$("body").append($(resp).find("#ACE_STDNT_GRADE_HDR_MID_TERM_AVG_CURR").find("tr:nth-child(5)").text() + "<br>");
 															$("body").append($(resp).find('[id="win0divSTDNT_GRADE_DTL$0"]').html());
 														}
 													});
