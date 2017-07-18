@@ -78,23 +78,43 @@ function l() {
 											method: me,
 											data: obj,
 											dataType: "text",
-											success: function(resp) {
+											success: function(resp2) {
 												$("#prog").css("width", 40 + "%");
-												var c = $(resp).find(".PSLEVEL1GRIDWBO tbody [valign='center']").size();
-												var cc = 1;
-												$(resp).find(".PSLEVEL1GRIDWBO tbody [valign='center']").each(function(i) {
-													$.ajax({
-														url: "https://kusis.ku.edu.tr/psc/ps/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.LAM_STDNT_GRADES.GBL?Page=LAM_STDNT_GRADES&Action=U&CLASS_NBR=" + $(this).find("td:nth-child(3) span").text() + "&EMPLID=" + eid + "&STRM=2162&TargetFrameName=None",
-														method: "GET",
-														success: function(resp) {
-															$("#prog").css("width", (40 + cc++ * 60 / c) + "%");
-															if (c == (cc - 1)) { $("#prog").hide(); }
-															$("body").append("<br>" + $(resp).find('[id=win0divDERIVED_SSR_FC_SSR_CLASSNAME_LONG]').html() + " - ");
-															$("body").append($(resp).find("#ACE_STDNT_GRADE_HDR_MID_TERM_AVG_CURR").find("tr:nth-child(4)").text());
-															$("body").append($(resp).find("#ACE_STDNT_GRADE_HDR_MID_TERM_AVG_CURR").find("tr:nth-child(5)").text() + "<br>");
-															$("body").append($(resp).find('[id="win0divSTDNT_GRADE_DTL$0"]').html());
-														}
-													});
+												$.ajax({
+													url: "https://kusis.ku.edu.tr/psc/ps/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SS_LAM_STD_GR_LST.GBL",
+													data: { ICAction: "CLASSTITLE$0", ICSID: icsid },
+													method: "POST",
+													success: function(resp) {
+														$("#prog").css("width", 50 + "%");
+														var termid = resp.match(/STRM=[0-9]*/)[0].split("=")[1];
+														var c = $(resp2).find(".PSLEVEL1GRIDWBO tbody [valign='center']").size();
+														var cc = 1;
+														$(resp2).find(".PSLEVEL1GRIDWBO tbody [valign='center']").each(function(i) {
+															$.ajax({
+																url: "https://kusis.ku.edu.tr/psc/ps/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.LAM_STDNT_GRADES.GBL?Page=LAM_STDNT_GRADES&Action=U&CLASS_NBR=" + $(this).find("td:nth-child(3) span").text() + "&EMPLID=" + eid + "&STRM=" + termid + "&TargetFrameName=None",
+																method: "GET",
+																success: function(resp) {
+																	$("#prog").css("width", (50 + cc++ * 40 / c) + "%");
+																	$("body").append("<br>" + $(resp).find('[id=win0divDERIVED_SSR_FC_SSR_CLASSNAME_LONG]').html() + " - ");
+																	$("body").append($(resp).find("#ACE_STDNT_GRADE_HDR_MID_TERM_AVG_CURR").find("tr:nth-child(4)").text());
+																	$("body").append($(resp).find("#ACE_STDNT_GRADE_HDR_MID_TERM_AVG_CURR").find("tr:nth-child(5)").text() + "<br>");
+																	$("body").append($(resp).find('[id="win0divSTDNT_GRADE_DTL$0"]').html());
+																	if (c == (cc - 1)) {
+																		$.ajax({
+																			url: "https://kusis.ku.edu.tr/psc/ps/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_EXAM_L.GBL?PortalActualURL=https%3a%2f%2fkusis.ku.edu.tr%2fpsc%2fps%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSR_SSENRL_EXAM_L.GBL&PortalContentURL=https%3a%2f%2fkusis.ku.edu.tr%2fpsc%2fps%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSR_SSENRL_EXAM_L.GBL&PortalContentProvider=HRMS&PortalCRefLabel=View%20My%20Exam%20Schedule&PortalRegistryName=EMPLOYEE&PortalServletURI=https%3a%2f%2fkusis.ku.edu.tr%2fpsp%2fps%2f&PortalURI=https%3a%2f%2fkusis.ku.edu.tr%2fpsc%2fps%2f&PortalHostNode=HRMS&NoCrumbs=yes&PortalKeyStruct=yes",
+																			method: "GET",
+																			success: function(resp) {
+																				$("body").append("<br>");
+																				$("body").append($(resp).find('[id="SS_EXAMSCH1_VW$scroll$0"]').html());
+																				$("#prog").css("width", "100%");
+																				$("#prog").slideUp(350);
+																			}
+																		});
+																	}
+																}
+															});
+														});
+													}
 												});
 											}
 										});														
