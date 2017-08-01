@@ -1,9 +1,9 @@
 {
 	"name": "KU Grades",
 	"description": "Koc University Grade Checker",
-	"version": "1.0.3",
-	"minimum_chrome_version": "16.0.884",
-	"permissions": ["https://kusis.ku.edu.tr/*", "storage"],
+	"version": "1.0.4",
+	"minimum_chrome_version": "22.0.1229.79",
+	"permissions": ["https://kusis.ku.edu.tr/*", "storage", "alarms"],
 	"content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
 	"browser_action": {
 		"default_popup": "popup.html",
