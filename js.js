@@ -14,10 +14,10 @@ function l() {
 					if (!resp.toString().includes("My academic level")) {
 						$("body").append("<br><br>Wrong id or password");
 					} else {
-						document.body.innerHTML = "";
+						document.body.innerHTML = '<base href="https://kusis.ku.edu.tr">';
 						$("body").append('<div align="right"><div id="pcon" align="left" style="width:100px; background-color:#DDDDDD"><div id="prog" style="background-color:#4CAF50; height:10px; width: 0%"></div></div></div>');
 						ipr += 6; $("#prog").animate({"width": ipr + "%"});
-						$("body").append("<link rel='stylesheet' type='text/css' href='https://kusis.ku.edu.tr/cs/ps/cache/css/SSS_STYLESHEET_27.css'>");
+						$("body").append("<link rel='stylesheet' type='text/css' href='https://kusis.ku.edu.tr/cs/ps/cache/PSSTYLEDEF_TANGERINE_1.css'>");
 						$.ajax({
 							url: "https://kusis.ku.edu.tr/psp/ps/EMPLOYEE/HRMS/?PORTALPARAM_COMPWIDTH=Narrow&ptlayout=N&tab=DEFAULT&pageletname=ADMN_KU_SS_ACAD_LEVEL_PAGELET_&cmd=refreshPglt",
 							method: "GET",
@@ -53,8 +53,9 @@ function l() {
 										d2.resolve(resp);
 										$.ajax({
 											url: "https://kusis.ku.edu.tr/psc/ps/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SS_LAM_STD_GR_LST.GBL",
-											data: { ICAction: "CLASSTITLE$0", ICSID: icsid },
+											data: { ICAction: "CLASSTITLE$0", ICSID: icsid, ICAJAX: "1" },
 											method: "POST",
+											dataType: "text",
 											success: function(resp) {
 												ipr += 6; $("#prog").animate({"width": ipr + "%"});
 												d3.resolve(resp.match(/STRM=[0-9]*/)[0].split("=")[1]);
