@@ -8,10 +8,10 @@ Instead of logging in manually and checking grades from Kusis, this open source 
 
 You can install this chrome extension directly from chrome web store by clicking blue "ADD TO CHROME" button at the right corner. (Name of this button will be different if you are using non-english chrome.)
 
-Source: https://github.com/insanEvladi/KU
+Source: https://github.com/serkankazak/KU
 
 Or you can add it to chrome manually in developer mode with these steps:
-1. download & unzip https://github.com/insanEvladi/KU/archive/master.zip
+1. download & unzip https://github.com/serkankazak/KU/archive/master.zip
 2. in chrome, go to chrome://extensions
 3. switch on 'Developer mode'
 4. click to 'Load unpacked'
