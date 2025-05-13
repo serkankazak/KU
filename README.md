@@ -1,5 +1,7 @@
 # KU Grades
 
+https://github.com/user-attachments/assets/45d35c35-8888-4aa0-b19e-6f4813a50087
+
 https://chrome.google.com/webstore/detail/ku-grades/penhpkgilnjmjehginoadgegkjcpfccl
 
 Koc university grade checker through Kusis.
