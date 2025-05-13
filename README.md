@@ -8,8 +8,6 @@ Instead of logging in manually and checking grades from Kusis, this open source 
 
 You can install this chrome extension directly from chrome web store by clicking blue "ADD TO CHROME" button at the right corner. (Name of this button will be different if you are using non-english chrome.)
 
-Source: https://github.com/serkankazak/KU
-
 Or you can add it to chrome manually in developer mode with these steps:
 1. download & unzip https://github.com/serkankazak/KU/archive/master.zip
 2. in chrome, go to chrome://extensions
@@ -17,9 +15,7 @@ Or you can add it to chrome manually in developer mode with these steps:
 4. click to 'Load unpacked'
 5. select unzipped folder 'KU-master'
 
-Demo: https://www.youtube.com/watch?v=MnA5jQN5BFY
-
-Security report: https://crxcavator.io/report/penhpkgilnjmjehginoadgegkjcpfccl/1.0.6
+Demo: https://www.youtube.com/watch?v=GzL_MzxVY_o
 
 - version 1.0.6: code update due to change in kusis & better 'content_security_policy'
 - version 1.0.5: change in kusis for exams adapted & new animation & new icon
